@@ -30,16 +30,19 @@ def createModel():
     return model 
 
 
-def plotdata(indexdf):
+def plotdata(file):
     #show plot data
-    indexdf=importCSV(file).set_index(['Date'])
+    dataset = importCSV(file)
+    dataset['Date']=pd.to_datetime(dataset['Date'], infer_datetime_format= True)
+    indexdf=dataset.set_index(['Date'])
+    indexdf = indexdf.apply(pd.to_numeric)
     plt.figure(figsize=(16,8))
     plt.title('Average price History')
     plt.plot(indexdf)
     plt.xlabel('Date', fontsize=18)
     plt.ylabel('Avarage Price USD', fontsize=18)
     plt.show()
-    
+
 
 def importDataset(file):
     dataset = importCSV(file)
