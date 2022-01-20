@@ -1,0 +1,12 @@
+train data : 372 
+test data : 92 
+steps_in : 15
+steps_out : 5
+epoch : 300
+mse pred : 41.070935506007615 
+
+prediction week+1 : 44.09101257243423 
+prediction week+2 : 17.19212751111019 
+prediction week+3 : 32.66454420180664 
+prediction week+4 : 84.15192980319534 
+prediction week+5 : 27.25506344149169 

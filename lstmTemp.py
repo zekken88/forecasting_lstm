@@ -9,29 +9,23 @@ with Multiple Parallel Input and Multi-Step Output
 
 
 """
-
+import tensorflow.keras.callbacks as cb
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.layers import RepeatVector
 from tensorflow.keras.layers import TimeDistributed
+from tensorflow.keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint
 import pandas as pd
 import matplotlib.pyplot as plt
-from utils import split_sequences,makeTrainTest,importCSV,getMSE,plotPredTestnSave
+from utils import split_sequences,makeTrainTest,importCSV,getMSE,plotPredTestnSave,addoil
 import datetime
 from os.path import join
 from numpy import array
 x_train, y_train, x_test, y_test  = (0,0,0,0)
-import os 
 
-def createModel():
-    model = Sequential()
-    model.add(LSTM(200, activation='relu', input_shape=(n_steps_in, n_features)))
-    model.add(RepeatVector(n_steps_out))
-    model.add(LSTM(200, activation='relu', return_sequences=True))
-    model.add(TimeDistributed(Dense(n_features)))
-    model.compile(optimizer='adam', loss='mse')
-    return model 
+import os 
 
 
 def plotdata(file):
@@ -46,12 +40,25 @@ def plotdata(file):
     plt.xlabel('Date', fontsize=18)
     plt.ylabel('Avarage Price USD', fontsize=18)
     plt.show()
+    
+def createModel():
 
+    
+    model = Sequential()
+    model.add(LSTM(200, activation='relu', input_shape=(n_steps_in, n_features), dropout=dropout))
+    model.add(RepeatVector(n_steps_out))
+    model.add(LSTM(200, activation='relu', return_sequences=True))
+    model.add(TimeDistributed(Dense(100, activation='relu')))
+    model.add(TimeDistributed(Dense(n_features)))
+    model.compile(loss='mse', optimizer='adam')
+    return model
 
 def importDataset(file):
     dataset = importCSV(file)
+    dataset['Date']=pd.to_datetime(dataset['Date'], infer_datetime_format= True)
+    dataset = addoil(dataset)
     dataset = dataset[columns]
-
+    
     """
     dataset['Date']=pd.to_datetime(dataset['Date'], infer_datetime_format= True)
     date = datetime.datetime(2000,1,1)
@@ -63,8 +70,8 @@ def importDataset(file):
     return dataset
 
 def sepparateXY(dataset,n_steps_in, n_steps_out ):
-    dataset = dataset[columns]
-    dataset = dataset.values
+    dataset     = dataset[columns]
+    dataset     = dataset.values
     x,y = split_sequences(dataset, n_steps_in, n_steps_out)
     return x,y
 
@@ -82,10 +89,11 @@ def makePrediction(x_test):
     # demonstrate prediction
     y_pred = array(y_pred)
     y_pred = y_pred.reshape(y_pred.shape[0],y_pred.shape[2],y_pred.shape[3])
+    
     return y_pred
 
 def createOutput(y_pred, y_test):
-    title       = 'without Asam Fosfat epoch = %s in = %s' % (epoch, n_steps_in)
+    title           = '%s epoch = %s in = %s' % (tit, epoch, n_steps_in) 
     MSE         = getMSE(y_test, y_pred)
     print(MSE)
     
@@ -150,36 +158,97 @@ def createOutput(y_pred, y_test):
         for i in notes:
             f.write(i)            
             f.write('\n')
+    return MSE
+
+def savemodel(model):
+    try:
+        os.mkdir('model')
+    except:
+        pass
+    path = join('model', 'Multiple Parallel Input and Multi-Step Output')
+    model.save(path)
+
+
 
 columns = [
-           #'Date'
+           #'Date',
            'Phosphate rock',
            'Asam Sulfat',
            'Sulphur',
            'DAP',
            'Crude Oil',
-           #'Asam Fosfat'
+           'Asam Fosfat'
            ]
 
-n_steps_in  = 15 #n weeks as input
+n_steps_in  = 10 #n weeks as input
 n_steps_out = 5 #n weeks as output
-epoch       = 500
+epoch       = 300
+dropout     = 0
 n_features  = len(columns)
-file        = join('Data','Sample 1 process.csv')
+file        = join('Data','Sample 1 per januari 2022.csv')
+model       = 0
 
 
-dataset     = importDataset(file)
-x,y         = sepparateXY(dataset, n_steps_in, n_steps_out)
+def process():
+    global model
+    global x_train, y_train, x_test, y_test 
+    title           = '%s epoch = %s in = %s' % (tit, epoch, n_steps_in) 
+    dataset     = importDataset(file)
+    es          = EarlyStopping(monitor='loss', verbose=1, patience=epoch/10)
+    mc          = ModelCheckpoint(join('model', '%s.h5'%(title)), monitor='loss', mode='min', save_best_only=True)    
+    x,y         = sepparateXY(dataset, n_steps_in, n_steps_out)
+    x_train, y_train, x_test, y_test = makeTrainTest(x,y)
+    model       = createModel()
+    model.fit(x_train, y_train, epochs=epoch, verbose=1, callbacks = [es, mc])
+    y_pred      = makePrediction(x_test)
+    
+    return createOutput (y_pred, y_test)
 
-x_train, y_train, x_test, y_test = makeTrainTest(x,y)
 
-n_features  = x.shape[2]
-model       = createModel()
-model.fit(x_train, y_train, epochs=epoch, verbose=1)
-y_pred      = makePrediction(x_test)
+#savemodel(model)
 
-createOutput (y_pred, y_test)
+#=======================
+#===== Evaluation ======
+#=======================
 
-
-
-
+import logging
+for test in range(1,4):
+    summary_filename = 'summary_test_%s'%(test)
+    tit             = 'all variable test%s'%(test)
+    eval_in         = [5,10,15]
+    eval_epoch      = [100,300,500]
+    mse_eval        = {i : { e: 0 for e in eval_epoch} for i in eval_in}
+    for ins in eval_in:
+        n_steps_in = ins
+        for ep in eval_epoch:
+            logging.warning('===================n_step_in : %s | epoch : %s======================'%(ins,ep))
+            epoch = ep 
+            mse_eval[n_steps_in][epoch] = process()
+            
+    summary = ["===================="]
+    summary_csv = []
+    for ins in mse_eval:
+        for ep in mse_eval[ins]:
+            summary.append('-----')    
+            one_row_csv     = {}
+            one_row_csv['n_steps_in']   = ins
+            one_row_csv['epoch']        = ep
+            one_row_csv['mse']          = int(mse_eval[ins][ep])
+            summary_csv.append(one_row_csv)
+            
+            summary.append('n_steps_in  :%s'%(ins))
+            summary.append('epoch       :%s'%(ep))
+            summary.append('mse         :%s'%(int(mse_eval[ins][ep])))
+            summary.append('')
+            summary.append('')
+        
+    with open(summary_filename + '.txt', 'a') as f :
+        for i in summary:
+            f.write(i)
+            f.write('\n')
+    
+    
+    csv =  pd.DataFrame(summary_csv)
+    csv.to_csv("%s.csv"%(summary_filename))
+    
+        

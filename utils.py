@@ -11,12 +11,18 @@ import pandas as pd
 from numpy import array
 import numpy as np
 import matplotlib.pyplot as plt
+import requests
+from datetime import timedelta
+
+
 def importCSV(file):
     dataset = []
     with open(file, 'r') as f:
         for row in csv.DictReader(f):
             dataset.append(row)
     df = pd.DataFrame(dataset)
+    df['Date']=pd.to_datetime(df['Date'], infer_datetime_format= True)
+
     return df
 
 def makeSequence(seq, step):
@@ -97,3 +103,42 @@ def split_sequences(sequences, n_steps_in, n_steps_out):
 		X.append(seq_x)
 		y.append(seq_y)
 	return array(X), array(y)
+
+def addoil(dataset):
+    
+
+    col_name = 'Crude Oil'
+    url = 'https://www.eia.gov/dnav/pet/hist_xls/RBRTEw.xls'
+    resp = requests.get(url)
+    
+    data = pd.read_excel(resp.content, sheet_name='Data 1')
+    data = data.values[2:]
+    oil_on_date = {}
+    delta = timedelta(days=1)
+    for i in data:
+        date = i[0] - delta
+        oil_on_date[date] = i[1]
+    
+    oil_col = []
+    for i in dataset.values:
+        try:
+            oil_col.append(oil_on_date[i[0]])
+        except:
+            date = i[0] - timedelta(days=7)
+            oil_col.append(oil_on_date[date])
+            
+    dataset[col_name] = oil_col
+    
+    columns = [
+               #'Date',
+               'Phosphate rock',
+               'Asam Sulfat',
+               'Sulphur',
+               'DAP',
+               'Crude Oil',
+               'Asam Fosfat'
+               ]
+    
+
+file = 'Data/Sample 1 per januari 2022.csv'
+dataset = importCSV(file)

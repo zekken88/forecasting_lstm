@@ -1,0 +1,165 @@
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1381.5097550785476
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1613.7135492223667
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :1621.3029387311572
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :1531.7468788692233
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :1278.163534990231
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1512.1894794650382
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :4539.729190029972
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :4211.76597310748
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :3212.348415537247
+
+
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1179.6471689128866
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1382.2141416062634
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :1613.7782529969888
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :2124.140377207282
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :2432.7441384965305
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1386.5223372086168
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :2333.5022811251742
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :1800.328621628128
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :1885.9880043135386
+
+
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1598
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1173
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :1607
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :1630
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :1668
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1498
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :4148
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :2155
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :2194
+
+
