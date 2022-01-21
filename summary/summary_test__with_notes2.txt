@@ -1,0 +1,55 @@
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1758
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1588
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :2373
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :4019
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :1826
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1876
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :4322
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :2353
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :2957
+
+

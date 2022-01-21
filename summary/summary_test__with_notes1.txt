@@ -1,0 +1,165 @@
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1837
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1614
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :2323
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :3119
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :4573
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :3137
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :2735
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :4197
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :3180
+
+
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :2728
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :2060
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :2369
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :3673
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :2343
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1901
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :4932
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :4222
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :4378
+
+
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1503
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :2025
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :2942
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :2595
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :1999
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1837
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :4265
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :3226
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :2303
+
+

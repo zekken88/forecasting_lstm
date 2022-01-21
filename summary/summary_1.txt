@@ -1,0 +1,46 @@
+====================
+n_steps_in  :5
+epoch       :100
+mse         :1255.2645583913625
+
+
+n_steps_in  :5
+epoch       :300
+mse         :1302.0910621515986
+
+
+n_steps_in  :5
+epoch       :500
+mse         :883.4089109749917
+
+
+n_steps_in  :10
+epoch       :100
+mse         :1732.2474381696618
+
+
+n_steps_in  :10
+epoch       :300
+mse         :1871.528749067127
+
+
+n_steps_in  :10
+epoch       :500
+mse         :1692.8871420135351
+
+
+n_steps_in  :15
+epoch       :100
+mse         :1425.4454792795605
+
+
+n_steps_in  :15
+epoch       :300
+mse         :2771.0521918066465
+
+
+n_steps_in  :15
+epoch       :500
+mse         :1494.032472310272
+
+

@@ -1,0 +1,56 @@
+train data : 386 
+test data : 96 
+steps_in : 10
+steps_out : 5
+epoch : 100
+mse pred : 2904.8611315416465 
+
+prediction week+1 : 2068 
+prediction week+2 : 2465 
+prediction week+3 : 2841 
+prediction week+4 : 3221 
+prediction week+5 : 3927 
+
+
+prediction for Phosphate rock
+	prediction week+1 : 268.86131800146967 
+	prediction week+2 : 80.05244174323828 
+	prediction week+3 : 62.99107160347012 
+	prediction week+4 : 76.84811212528136 
+	prediction week+5 : 90.75384396866684 
+
+prediction for Asam Sulfat
+	prediction week+1 : 691.840831722155 
+	prediction week+2 : 684.3065230558246 
+	prediction week+3 : 509.71413490300387 
+	prediction week+4 : 514.4033939444394 
+	prediction week+5 : 626.7620234265258 
+
+prediction for Sulphur
+	prediction week+1 : 758.2732896614658 
+	prediction week+2 : 1340.0215224124447 
+	prediction week+3 : 1656.490857534843 
+	prediction week+4 : 2173.9265534022375 
+	prediction week+5 : 3042.944410510121 
+
+prediction for DAP
+	prediction week+1 : 3720.386266679377 
+	prediction week+2 : 4763.253049156134 
+	prediction week+3 : 6652.985050119741 
+	prediction week+4 : 7678.730704252365 
+	prediction week+5 : 9503.698896205673 
+
+prediction for Crude Oil
+	prediction week+1 : 144.73070482031903 
+	prediction week+2 : 371.2123891653724 
+	prediction week+3 : 276.613252849909 
+	prediction week+4 : 239.29873007583447 
+	prediction week+5 : 280.4839843840966 
+
+prediction for Asam Fosfat
+	prediction week+1 : 6828.120195326123 
+	prediction week+2 : 7553.991897842886 
+	prediction week+3 : 7891.99443752858 
+	prediction week+4 : 8643.044420445804 
+	prediction week+5 : 10019.09963938198 
+

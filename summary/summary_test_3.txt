@@ -1,0 +1,110 @@
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1218.428424544498
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1463.4226381720464
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :1396.749708780637
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :2157.988009120196
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :1562.7034843703673
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :1730.8726541711694
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :1237.5587757497933
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :2402.1253933689823
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :1748.1658363269134
+
+
+====================
+-----
+n_steps_in  :5
+epoch       :100
+mse         :1917
+
+
+-----
+n_steps_in  :5
+epoch       :300
+mse         :1454
+
+
+-----
+n_steps_in  :5
+epoch       :500
+mse         :1223
+
+
+-----
+n_steps_in  :10
+epoch       :100
+mse         :2255
+
+
+-----
+n_steps_in  :10
+epoch       :300
+mse         :2134
+
+
+-----
+n_steps_in  :10
+epoch       :500
+mse         :2043
+
+
+-----
+n_steps_in  :15
+epoch       :100
+mse         :5066
+
+
+-----
+n_steps_in  :15
+epoch       :300
+mse         :2628
+
+
+-----
+n_steps_in  :15
+epoch       :500
+mse         :1807
+
+
