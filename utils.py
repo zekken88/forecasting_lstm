@@ -138,7 +138,10 @@ def addoil(dataset):
                'Crude Oil',
                'Asam Fosfat'
                ]
+<<<<<<< HEAD
     return dataset
+=======
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
     
 
 file = 'Data/Sample 1 per januari 2022.csv'

@@ -9,7 +9,10 @@ with Multiple Parallel Input and Multi-Step Output
 
 
 """
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
 import tensorflow.keras.callbacks as cb
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM
@@ -169,7 +172,11 @@ def createOutput(y_pred, y_test):
         for i in notes:
             f.write(i)            
             f.write('\n')
+<<<<<<< HEAD
     return MSE, notes_csv
+=======
+    return MSE
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
 
 def savemodel(model):
     try:
@@ -198,14 +205,22 @@ dropout     = 0
 n_features  = len(columns)
 file        = join('Data','Sample 1 per januari 2022.csv')
 model       = 0
+<<<<<<< HEAD
 dataset     = []
 dataset     = importDataset(file)
+=======
+
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
 
 def process():
     global model
     global x_train, y_train, x_test, y_test 
     title           = '%s epoch = %s in = %s' % (tit, epoch, n_steps_in) 
+<<<<<<< HEAD
     
+=======
+    dataset     = importDataset(file)
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
     es          = EarlyStopping(monitor='loss', verbose=1, patience=epoch/10)
     mc          = ModelCheckpoint(join('model', '%s.h5'%(title)), monitor='loss', mode='min', save_best_only=True)    
     x,y         = sepparateXY(dataset, n_steps_in, n_steps_out)
@@ -225,20 +240,33 @@ def process():
 
 import logging
 for test in range(1,4):
+<<<<<<< HEAD
     summary_filename = 'summary_test__with_notes%s'%(test)
     tit             = 'all variable test notes%s'%(test)
     eval_in         = [5,10,15]
     eval_epoch      = [100,300,500]
     mse_eval        = {i : { e: 0 for e in eval_epoch} for i in eval_in}
     notes_csv       = []
+=======
+    summary_filename = 'summary_test_%s'%(test)
+    tit             = 'all variable test%s'%(test)
+    eval_in         = [5,10,15]
+    eval_epoch      = [100,300,500]
+    mse_eval        = {i : { e: 0 for e in eval_epoch} for i in eval_in}
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
     for ins in eval_in:
         n_steps_in = ins
         for ep in eval_epoch:
             logging.warning('===================n_step_in : %s | epoch : %s======================'%(ins,ep))
+<<<<<<< HEAD
             epoch = ep
             
             mse_eval[n_steps_in][epoch],notes = process()
             notes_csv.append(notes)
+=======
+            epoch = ep 
+            mse_eval[n_steps_in][epoch] = process()
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
             
     summary = ["===================="]
     summary_csv = []
@@ -256,8 +284,12 @@ for test in range(1,4):
             summary.append('mse         :%s'%(int(mse_eval[ins][ep])))
             summary.append('')
             summary.append('')
+<<<<<<< HEAD
             
     summary_csv += notes_csv
+=======
+        
+>>>>>>> 31661a32aa362de73b9a9fd81d6bdfb249011053
     with open(summary_filename + '.txt', 'a') as f :
         for i in summary:
             f.write(i)
